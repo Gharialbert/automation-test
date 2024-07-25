@@ -1,0 +1,30 @@
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.common.keys import Keys
+
+# Set up the WebDriver
+driver = webdriver.Chrome()  # Or use Firefox(), Edge(), etc.
+
+# Open the JobJenius site
+driver.get("https://www.jobjenius.com")  # Replace with the actual URL
+
+# Example: Test the login functionality
+def test_login():
+    # Locate elements
+    username_input = driver.find_element(By.ID, "username")  # Replace with the actual ID or selector
+    password_input = driver.find_element(By.ID, "password")  # Replace with the actual ID or selector
+    login_button = driver.find_element(By.ID, "login-button")  # Replace with the actual ID or selector
+
+    # Perform actions
+    username_input.send_keys("testuser")
+    password_input.send_keys("testpassword")
+    login_button.click()
+
+    # Verify the result
+    assert "Dashboard" in driver.title  # Replace with a check specific to your site
+
+# Run the test
+test_login()
+
+# Close the WebDriver
+driver.quit()
